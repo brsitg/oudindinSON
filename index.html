@@ -58,14 +58,27 @@
             { img: "https://i.imgur.com/J1a8LOv.png", text: "fried chicken" },
             { img: "https://i.imgur.com/oZDIeHj.png", text: "corn" },
             { img: "https://i.imgur.com/DVUhuC3.png", text: "ethen" },
-            { img: "https://i.imgur.com/ASzWrtM.png", text: "woah" }
+            { img: "https://i.imgur.com/ASzWrtM.png", text: "woah" },
+
+            // added default one into the random pool
+            { img: "https://i.imgur.com/IkgrUtk.jpg", text: "oudindinSON" }
         ];
 
         const imgEl = document.getElementById("image");
         const textEl = document.getElementById("text");
 
+        let lastIndex = -1;
+
         document.body.addEventListener("click", () => {
-            const random = items[Math.floor(Math.random() * items.length)];
+            let randomIndex;
+
+            do {
+                randomIndex = Math.floor(Math.random() * items.length);
+            } while (randomIndex === lastIndex && items.length > 1);
+
+            lastIndex = randomIndex;
+
+            const random = items[randomIndex];
             imgEl.src = random.img;
             textEl.textContent = random.text;
         });
