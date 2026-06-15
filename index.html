@@ -16,6 +16,7 @@
             z-index: 2;
             color: white;
             margin-left: 20px;
+            text-shadow: 2px 2px 6px black;
         }
 
         h1 {
@@ -32,19 +33,43 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            object-fit: fill; /* changed from cover to fill */
+            object-fit: fill;
             z-index: 1;
         }
     </style>
 </head>
 
 <body>
+
     <h1>welcome to my epic website</h1>
-    <h2>oudindinSON</h2>
+    <h2 id="text">oudindinSON</h2>
 
     <div class="gallery">
-        <img src="https://i.imgur.com/IkgrUtk.jpg" alt="oudindinSON">
+        <img id="image" src="https://i.imgur.com/IkgrUtk.jpg" alt="image">
     </div>
+
+    <script>
+        const items = [
+            { img: "https://i.imgur.com/O13LshY.png", text: "ethan tweakin" },
+            { img: "https://i.imgur.com/w4W1l2t.png", text: "fricky ahh" },
+            { img: "https://i.imgur.com/h2dObfo.png", text: "possessed" },
+            { img: "https://i.imgur.com/uRcojym.png", text: "flying issac" },
+            { img: "https://i.imgur.com/CDJXs23.png", text: "hehe" },
+            { img: "https://i.imgur.com/J1a8LOv.png", text: "fried chicken" },
+            { img: "https://i.imgur.com/oZDIeHj.png", text: "corn" },
+            { img: "https://i.imgur.com/DVUhuC3.png", text: "ethen" },
+            { img: "https://i.imgur.com/ASzWrtM.png", text: "woah" }
+        ];
+
+        const imgEl = document.getElementById("image");
+        const textEl = document.getElementById("text");
+
+        document.body.addEventListener("click", () => {
+            const random = items[Math.floor(Math.random() * items.length)];
+            imgEl.src = random.img;
+            textEl.textContent = random.text;
+        });
+    </script>
 
 </body>
 </html>
